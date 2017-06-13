@@ -3,7 +3,7 @@ export default {
   getRoot: () => {
     return {
       ok: true,
-      data: require('../Fixtures/root.json')
+      data: require('../Fixtures/torrents.json')
     }
   },
   login: (username, password) => {
