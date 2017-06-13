@@ -54,3 +54,4 @@ fastlane/screenshots
 
 #VS
 .vscode/
+.vscode/settings.json
