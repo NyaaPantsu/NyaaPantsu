@@ -1,3 +1,4 @@
+/* eslint-env mocha, jest */
 import { select, put } from 'redux-saga/effects'
 import { selectTorrents, startup } from '../../App/Sagas/StartupSagas'
 import NyaaActions from '../../App/Redux/NyaaRedux'

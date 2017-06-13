@@ -1,3 +1,4 @@
+/* eslint-env mocha, jest */
 import Actions, { reducer, INITIAL_STATE, isLoggedIn } from '../../App/Redux/LoginRedux'
 
 test('attempt', () => {
