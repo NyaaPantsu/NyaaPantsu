@@ -20,5 +20,21 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
+  },
+  getTorrents: (title, category, max, status) => {
+    // This fixture only supports gantman or else returns skellock
+    const torrentsData = require('../Fixtures/torrents.json')
+    return {
+      ok: true,
+      data: torrentsData
+    }
+  },
+  getTorrent: (id) => {
+    // This fixture only supports gantman or else returns skellock
+    const torrentsData = require('../Fixtures/torrents.json')
+    return {
+      ok: true,
+      data: torrentsData[0]
+    }
   }
 }

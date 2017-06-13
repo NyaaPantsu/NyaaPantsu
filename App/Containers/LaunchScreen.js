@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
 import { Images } from '../Themes'
 
 // Styles
@@ -10,18 +10,21 @@ export default class LaunchScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        <TouchableOpacity style={styles.logoOverBackground} onPress={() => this.props.navigation.navigate("MainScreen") } >
+          <Image source={Images.megumin} />
+        </TouchableOpacity>
         <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
-          </View>
-
+        <View style={styles.centered} >
+            <Image source={Images.logo} style={styles.logo} />
+        </View>
           <View style={styles.section} >
-            <Image source={Images.ready} />
             <Text style={styles.sectionText}>
-              This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.
+              Congrats, You just installed the new app for NyaaPantsu!
+            </Text>
+            <Text style={styles.sectionText}>
+              With this you're ready to grab anything you want! Now, it's time to *mofu* *mofu* (click) Megumin!
             </Text>
           </View>
-
         </ScrollView>
       </View>
     )

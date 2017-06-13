@@ -18,29 +18,45 @@ class LoginScreen extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
     fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func
+    errors:   PropTypes.object,
+    attemptLogin: PropTypes.func,
+    token: PropTypes.string
   }
 
   isAttempting = false
   keyboardDidShowListener = {}
   keyboardDidHideListener = {}
 
+  static navigationOptions = ({ navigation }) => ({
+      title: "Login",
+    });
+
   constructor (props) {
     super(props)
     this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
+      username: '',
+      password: '',
       visibleHeight: Metrics.screenHeight,
       topLogo: { width: Metrics.screenWidth }
     }
     this.isAttempting = false
+    this.errors = {
+      password: [],
+      username: [],
+      errors:   []
+    }
   }
 
   componentWillReceiveProps (newProps) {
     this.forceUpdate()
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
-      this.props.navigation.goBack()
+      if (newProps.user !== null) {
+        this.props.navigation.navigate("TorrentListScreen")
+      }
+      if (newProps.errors !== null) {
+        this.errors = newProps.errors
+      }
     }
   }
 
@@ -90,14 +106,35 @@ class LoginScreen extends React.Component {
     this.setState({ password: text })
   }
 
+  renderError(name) {
+    if (this.errors[name]) {
+    let err = this.errors[name].map((t, val, index) => {
+      return (
+      <View style={styles.errorLabel} key={ name+val }>
+        <Text style={styles.errorText}>{index}</Text>
+      </View>
+      )
+    }) 
+    console.log(err)
+    return (
+      <View>
+      {err}
+      </View>
+    )
+  }
+  return null
+  }
+
   render () {
     const { username, password } = this.state
-    const { fetching } = this.props
+    const { fetching, token } = this.props
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
+        {this.renderError("errors")}
         <View style={styles.form}>
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Username</Text>
@@ -115,6 +152,7 @@ class LoginScreen extends React.Component {
               onSubmitEditing={() => this.refs.password.focus()}
               placeholder='Username' />
           </View>
+        {this.renderError("username")}
 
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Password</Text>
@@ -133,6 +171,7 @@ class LoginScreen extends React.Component {
               onSubmitEditing={this.handlePressLogin}
               placeholder='Password' />
           </View>
+        {this.renderError("password")}
 
           <View style={[styles.loginRow]}>
             <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
@@ -155,7 +194,9 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    fetching: state.login.fetching,
+    user: state.login.user,
+    errors: state.login.error
   }
 }
 

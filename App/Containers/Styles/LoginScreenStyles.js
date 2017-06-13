@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { Colors, Metrics, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
     paddingTop: 70,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.nyaabg
   },
   form: {
-    backgroundColor: Colors.snow,
+    backgroundColor: Colors.nyaarowbg,
     margin: Metrics.baseMargin,
     borderRadius: 4
   },
@@ -35,10 +35,14 @@ export default StyleSheet.create({
     flex: 1
   },
   loginButton: {
-    flex: 1,
     borderWidth: 1,
     borderColor: Colors.charcoal,
     backgroundColor: Colors.panther,
+    borderRadius: 5,
+    flex:1,
+    marginHorizontal: Metrics.baseMargin,
+    paddingVertical: Metrics.baseMargin,
+    justifyContent: 'center',
     padding: 6
   },
   loginText: {
@@ -48,5 +52,15 @@ export default StyleSheet.create({
   topLogo: {
     alignSelf: 'center',
     resizeMode: 'contain'
+  },
+  errorLabel: {
+    backgroundColor: Colors.ember,
+    padding: Metrics.smallMargin,
+    marginTop: -10,
+    marginBottom: 10,
+    borderRadius:5,
+  },
+  errorText: {
+    fontSize: Fonts.size.tiny
   }
 })

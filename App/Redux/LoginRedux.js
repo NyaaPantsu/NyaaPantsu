@@ -5,7 +5,8 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   loginRequest: ['username', 'password'],
-  loginSuccess: ['username'],
+  checkLoginRequest: ['username', 'token'],
+  loginSuccess: ['user'],
   loginFailure: ['error'],
   logout: null
 })
@@ -16,7 +17,10 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
+  user: null,
   username: null,
+  token: null,
+  password: null,
   error: null,
   fetching: false
 })
@@ -24,15 +28,16 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 // we're attempting to login
-export const request = (state) => state.merge({ fetching: true })
+export const request = (state, { username, password }) => state.merge({ fetching: true, username })
 
-// we've successfully logged in
-export const success = (state, { username }) =>
-  state.merge({ fetching: false, error: null, username })
+export const checkRequest = (state, { username, token }) => state.merge({ fetching: true, username, token })
+// we've successfully logged in or checked token
+export const success = (state, { user }) =>
+  state.merge({ fetching: false, error: null, user, password:null, token:null })
 
 // we've had a problem logging in
 export const failure = (state, { error }) =>
-  state.merge({ fetching: false, error })
+  state.merge({ fetching: false, error, password:null, token:null })
 
 // we've logged out
 export const logout = (state) => INITIAL_STATE
@@ -41,6 +46,7 @@ export const logout = (state) => INITIAL_STATE
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_REQUEST]: request,
+  [Types.CHECK_LOGIN_REQUEST]: checkRequest,
   [Types.LOGIN_SUCCESS]: success,
   [Types.LOGIN_FAILURE]: failure,
   [Types.LOGOUT]: logout
@@ -49,4 +55,4 @@ export const reducer = createReducer(INITIAL_STATE, {
 /* ------------- Selectors ------------- */
 
 // Is the current user logged in?
-export const isLoggedIn = (loginState) => loginState.username !== null
+export const isLoggedIn = (loginState) => loginState.user !== null

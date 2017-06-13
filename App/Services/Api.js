@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://nyaa.pantsu.cat/api') => {
   // ------
   // STEP 1
   // ------
@@ -35,6 +35,10 @@ const create = (baseURL = 'https://api.github.com/') => {
   // way at this level.
   //
   const getRoot = () => api.get('')
+  const getTorrents = (title, category, max, status) => api.get('search', {q: title, c:category, s:status, max:max})
+  const login = (username, password) => api.post('login', {username: username, password: password})
+  const checkLogin = (username, token) => api.get('token/check', {username: username}, {headers: {'Authorization': token}})
+  const getTorrent = (id) => api.get('view/'+id)
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
 
@@ -53,8 +57,12 @@ const create = (baseURL = 'https://api.github.com/') => {
   return {
     // a list of the API functions from step 2
     getRoot,
+    getTorrents,
+    getTorrent,
     getRate,
-    getUser
+    getUser,
+    checkLogin,
+    login
   }
 }
 

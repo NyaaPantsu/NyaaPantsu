@@ -18,6 +18,12 @@ const ApplicationStyles = {
       bottom: 0,
       right: 0
     },
+    logoOverBackground: {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      zIndex: 10
+    },
     container: {
       flex: 1,
       paddingTop: Metrics.baseMargin,

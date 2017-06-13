@@ -15,12 +15,22 @@ const colors = {
   coal: '#2d2d2d',
   bloodOrange: '#fb5f26',
   snow: 'white',
+  purpleBlack: '#676767',
+  snowAlpha: 'rgba(255, 255, 255, 0.9)',
   ember: 'rgba(164, 0, 48, 0.5)',
   fire: '#e73536',
   drawer: 'rgba(30, 30, 29, 0.95)',
   eggplant: '#251a34',
+  nyaaborder: 'rgb(230, 239, 244)',
+  nyaabg: '#edf2f5',
+  nyaarowbg: 'rgba(243,249,252, 0.85)',
+  nyaatint: '#444',
   border: '#483F53',
   banner: '#5F3E63',
+  headerbg: '#d7c6e7',
+  drawerbg: '#dcccea',
+  textmenu: '#9b85ae',
+  palegreen: "#98FB98",
   text: '#E0D7E5'
 }
 
