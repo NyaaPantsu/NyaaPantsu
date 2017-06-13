@@ -9,20 +9,20 @@ export default StyleSheet.create({
   },
   background: {
     backgroundColor: Colors.nyaabg,
-    flex:1
+    flex: 1
   },
   torrent: {
     backgroundColor: Colors.nyaarowbg,
     margin: Metrics.baseMargin,
     borderRadius: 4,
-    flex:1,
+    flex: 1,
     paddingHorizontal: Metrics.smallMargin,
-    paddingVertical: Metrics.smallMargin,
+    paddingVertical: Metrics.smallMargin
   },
   topLogo: {
     position: 'absolute',
     bottom: 0,
     right: 0,
     resizeMode: 'contain'
-  },
+  }
 })

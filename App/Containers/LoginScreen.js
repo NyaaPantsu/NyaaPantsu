@@ -15,22 +15,6 @@ import {Images, Metrics} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 
 class LoginScreen extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    fetching: PropTypes.bool,
-    errors:   PropTypes.object,
-    attemptLogin: PropTypes.func,
-    token: PropTypes.string
-  }
-
-  isAttempting = false
-  keyboardDidShowListener = {}
-  keyboardDidHideListener = {}
-
-  static navigationOptions = ({ navigation }) => ({
-      title: "Login",
-    });
-
   constructor (props) {
     super(props)
     this.state = {
@@ -43,7 +27,7 @@ class LoginScreen extends React.Component {
     this.errors = {
       password: [],
       username: [],
-      errors:   []
+      errors: []
     }
   }
 
@@ -52,7 +36,7 @@ class LoginScreen extends React.Component {
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       if (newProps.user !== null) {
-        this.props.navigation.navigate("TorrentListScreen")
+        this.props.navigation.navigate('TorrentListScreen')
       }
       if (newProps.errors !== null) {
         this.errors = newProps.errors
@@ -106,35 +90,35 @@ class LoginScreen extends React.Component {
     this.setState({ password: text })
   }
 
-  renderError(name) {
+  renderError (name) {
     if (this.errors[name]) {
-    let err = this.errors[name].map((t, val, index) => {
+      let err = this.errors[name].map((t, val, index) => {
+        return (
+          <View style={styles.errorLabel} key={name + val}>
+            <Text style={styles.errorText}>{index}</Text>
+          </View>
+        )
+      })
+      console.log(err)
       return (
-      <View style={styles.errorLabel} key={ name+val }>
-        <Text style={styles.errorText}>{index}</Text>
-      </View>
+        <View>
+          {err}
+        </View>
       )
-    }) 
-    console.log(err)
-    return (
-      <View>
-      {err}
-      </View>
-    )
-  }
-  return null
+    }
+    return null
   }
 
   render () {
     const { username, password } = this.state
-    const { fetching, token } = this.props
+    const { fetching } = this.props
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
 
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
-        {this.renderError("errors")}
+        {this.renderError('errors')}
         <View style={styles.form}>
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Username</Text>
@@ -152,7 +136,7 @@ class LoginScreen extends React.Component {
               onSubmitEditing={() => this.refs.password.focus()}
               placeholder='Username' />
           </View>
-        {this.renderError("username")}
+          {this.renderError('username')}
 
           <View style={styles.row}>
             <Text style={styles.rowLabel}>Password</Text>
@@ -171,7 +155,7 @@ class LoginScreen extends React.Component {
               onSubmitEditing={this.handlePressLogin}
               placeholder='Password' />
           </View>
-        {this.renderError("password")}
+          {this.renderError('password')}
 
           <View style={[styles.loginRow]}>
             <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
@@ -191,6 +175,19 @@ class LoginScreen extends React.Component {
     )
   }
 }
+
+LoginScreen.propTypes = {
+  dispatch: PropTypes.func,
+  fetching: PropTypes.bool,
+  errors: PropTypes.object,
+  attemptLogin: PropTypes.func,
+  token: PropTypes.string
+}
+LoginScreen.keyboardDidShowListener = {}
+LoginScreen.keyboardDidHideListener = {}
+LoginScreen.navigationOptions = ({ navigation }) => ({
+  title: 'Login'
+})
 
 const mapStateToProps = (state) => {
   return {

@@ -1,37 +1,35 @@
 import React, {PropTypes} from 'react'
-import { ScrollView, Text, TextInput, Image, TouchableOpacity, View, Picker, Switch, Platform } from 'react-native'
+import { ScrollView, Text, TextInput, Image, TouchableOpacity, View, Picker, Switch } from 'react-native'
 import { connect } from 'react-redux'
-import {DocumentPicker, DocumentPickerUtil} from "react-native-document-picker"
+import {DocumentPicker, DocumentPickerUtil} from 'react-native-document-picker'
 import RNFetchBlob from 'react-native-fetch-blob'
-import PushNotification from 'react-native-push-notification'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import {Images} from "../Themes"
+import {Images} from '../Themes'
 import styles from './Styles/UploadScreenStyle'
-import {isLoggedIn} from "../Redux/LoginRedux"
+import {isLoggedIn} from '../Redux/LoginRedux'
 
 class UploadScreenScreen extends React.Component {
-  
   static propTypes = {
     isLogged: PropTypes.bool,
     user: PropTypes.object
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: "Upload Torrent",
-    headerTitle: "Upload - NyaaPantsu",
+    title: 'Upload Torrent',
+    headerTitle: 'Upload - NyaaPantsu'
   });
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = { // Default values
-      name: "",
-      category: "3_5",
-      website: "",
-      description: "",
-      torrent: {fileName:""},
+      name: '',
+      category: '3_5',
+      website: '',
+      description: '',
+      torrent: {fileName: ''},
       remake: false,
       anon: false
     }
@@ -39,51 +37,51 @@ class UploadScreenScreen extends React.Component {
   }
 
   handleChangeName = (text) => {
-    this.setState({name:text})
+    this.setState({name: text})
   }
   handleChangeWebsite = (text) => {
-    this.setState({website:text})
+    this.setState({website: text})
   }
   handleChangeDescription = (text) => {
-    this.setState({description:text})
+    this.setState({description: text})
   }
   handleChangeCategory = (itemValue, itemIndex) => {
-    this.setState({category:itemValue})
+    this.setState({category: itemValue})
   }
   handleChangeAnon = (bool) => {
-    this.setState({anon:bool})
+    this.setState({anon: bool})
   }
   handleChangeRemake = (bool) => {
-    this.setState({remake:bool})
+    this.setState({remake: bool})
   }
-  
+
   handlePressUpload = () => {
     const { name, category, website, description, remake, anon, torrent } = this.state
     console.log(this.props.user)
-    const token = (this.props.user) ? this.props.user.token : ""
-    const username = (this.props.user) ? this.props.user.username : ""
+    const token = (this.props.user) ? this.props.user.token : ''
+    const username = (this.props.user) ? this.props.user.username : ''
     this.isAttempting = true
     RNFetchBlob.fetch('POST', 'http://nyaa.pantsu.cat/api/upload', {
-    Authorization : token,
-    'Content-Type' : 'multipart/form-data',
+      Authorization: token,
+      'Content-Type': 'multipart/form-data'
     // here's the body you're going to send, should be a BASE64 encoded string
     // (you can use "base64"(refer to the library 'mathiasbynens/base64') APIs to make one).
-    // The data will be converted to "byte array"(say, blob) before request sent.  
-  }, [
-  {name: "torrent", filename: torrent.fileName, data: RNFetchBlob.wrap(torrent.uri)},
-  {name: "username", data:username},
-  {name: "name", data:name},
-  {name: "c", data:category},
-  {name: "website_link", data:website},
-  {name: "desc", data:description},
-  {name: "remake", data: (remake) ? "true" : "false"},
-  {name: "hidden", data:(anon) ? "true" : "false"}
-  ])
+    // The data will be converted to "byte array"(say, blob) before request sent.
+    }, [
+  {name: 'torrent', filename: torrent.fileName, data: RNFetchBlob.wrap(torrent.uri)},
+  {name: 'username', data: username},
+  {name: 'name', data: name},
+  {name: 'c', data: category},
+  {name: 'website_link', data: website},
+  {name: 'desc', data: description},
+  {name: 'remake', data: (remake) ? 'true' : 'false'},
+  {name: 'hidden', data: (anon) ? 'true' : 'false'}
+    ])
     .then((res) => {
       this.isAttempting = false
       const resJson = res.json()
       if (resJson.ok) {
-        this.props.navigation.navigate("TorrentViewScreen", { id: resJson.data.id, name: resJson.data.name })
+        this.props.navigation.navigate('TorrentViewScreen', { id: resJson.data.id, name: resJson.data.name })
       }
     })
     .catch((err) => {
@@ -93,16 +91,16 @@ class UploadScreenScreen extends React.Component {
   }
   handlePressFile = () => {
     DocumentPicker.show({
-      filetype: [DocumentPickerUtil.allFiles()],
-    },(error,url) => {
+      filetype: [DocumentPickerUtil.allFiles()]
+    }, (error, url) => {
       if (error === null) {
         if (__DEV__) console.log(url)
-        this.setState({torrent:url})
-        if (this.state.name == "") {
+        this.setState({torrent: url})
+        if (this.state.name === '') {
           this.setState({name: url.fileName})
         }
       }
-    });
+    })
   }
 
   render () {
@@ -115,13 +113,13 @@ class UploadScreenScreen extends React.Component {
         <View style={styles.switchRow}>
           <Text style={styles.switchLabel}>Upload as Anonymous</Text>
           <Switch
-          onValueChange={this.handleChangeAnon}
-          value={anon} />
+            onValueChange={this.handleChangeAnon}
+            value={anon} />
         </View>
       )
     }
     return (
-      <ScrollView style={ styles.background }>
+      <ScrollView style={styles.background}>
         <Image source={Images.megumin} style={styles.topLogo} />
         <View contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
           <View style={styles.form}>
@@ -152,27 +150,27 @@ class UploadScreenScreen extends React.Component {
             <View style={styles.row}>
               <Text style={styles.rowLabel}>Category</Text>
               <Picker
-                  ref="category"
-                  selectedValue={category}
-                  onValueChange={this.handleChangeCategory}
-                  editable={editable}>
-                  <Picker.Item value="3_12" label="Anime - Anime Music Video" />
-                  <Picker.Item value="3_5" label="Anime - English-translated" />
-                  <Picker.Item value="3_13" label="Anime - Non-English-translated" />
-                  <Picker.Item value="3_6" label="Anime - Raw" />
-                  <Picker.Item value="2_3" label="Audio - Lossless" />
-                  <Picker.Item value="2_4" label="Audio - Lossy" />
-                  <Picker.Item value="4_7" label="Literature - English-translated" />
-                  <Picker.Item value="4_14" label="Literature - Non-English-translated" />
-                  <Picker.Item value="4_8" label="Literature - Raw" />
-                  <Picker.Item value="5_9" label="Live Action - English-translated" />
-                  <Picker.Item value="5_10" label="Live Action - Idol/Promotional Video" />
-                  <Picker.Item value="5_18" label="Live Action - Non-English-translated" />
-                  <Picker.Item value="5_11" label="Live Action - Raw" />
-                  <Picker.Item value="6_15" label="Pictures - Graphics" />
-                  <Picker.Item value="6_16" label="Pictures - Photos" />
-                  <Picker.Item value="1_1" label="Software - Applications" />
-                  <Picker.Item value="1_2" label="Software - Games" />
+                ref='category'
+                selectedValue={category}
+                onValueChange={this.handleChangeCategory}
+                editable={editable}>
+                <Picker.Item value='3_12' label='Anime - Anime Music Video' />
+                <Picker.Item value='3_5' label='Anime - English-translated' />
+                <Picker.Item value='3_13' label='Anime - Non-English-translated' />
+                <Picker.Item value='3_6' label='Anime - Raw' />
+                <Picker.Item value='2_3' label='Audio - Lossless' />
+                <Picker.Item value='2_4' label='Audio - Lossy' />
+                <Picker.Item value='4_7' label='Literature - English-translated' />
+                <Picker.Item value='4_14' label='Literature - Non-English-translated' />
+                <Picker.Item value='4_8' label='Literature - Raw' />
+                <Picker.Item value='5_9' label='Live Action - English-translated' />
+                <Picker.Item value='5_10' label='Live Action - Idol/Promotional Video' />
+                <Picker.Item value='5_18' label='Live Action - Non-English-translated' />
+                <Picker.Item value='5_11' label='Live Action - Raw' />
+                <Picker.Item value='6_15' label='Pictures - Graphics' />
+                <Picker.Item value='6_16' label='Pictures - Photos' />
+                <Picker.Item value='1_1' label='Software - Applications' />
+                <Picker.Item value='1_2' label='Software - Games' />
               </Picker>
             </View>
             <View style={styles.row}>
@@ -197,7 +195,7 @@ class UploadScreenScreen extends React.Component {
                 ref='description'
                 value={description}
                 editable={editable}
-                multiline={true}
+                multiline
                 numberOfLines={4}
                 keyboardType='default'
                 returnKeyType='next'
@@ -211,8 +209,8 @@ class UploadScreenScreen extends React.Component {
             <View style={styles.switchRow}>
               <Text style={styles.switchLabel}>Mark as Remake</Text>
               <Switch
-              onValueChange={this.handleChangeRemake}
-              value={remake} />
+                onValueChange={this.handleChangeRemake}
+                value={remake} />
             </View>
             {markAsAnon}
             <View style={[styles.uploadRow]}>

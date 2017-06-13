@@ -5,11 +5,11 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
 
-  torrentRequest: ["title", "category", "max", "status"],
-  torrentSuccess: ["torrents"],
+  torrentRequest: ['title', 'category', 'max', 'status'],
+  torrentSuccess: ['torrents'],
   torrentFailure: null,
   torrentViewRequest: null,
-  torrentViewSuccess: ["torrent"],
+  torrentViewSuccess: ['torrent'],
   torrentViewFailure: null
 })
 

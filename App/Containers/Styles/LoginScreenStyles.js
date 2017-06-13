@@ -39,7 +39,7 @@ export default StyleSheet.create({
     borderColor: Colors.charcoal,
     backgroundColor: Colors.panther,
     borderRadius: 5,
-    flex:1,
+    flex: 1,
     marginHorizontal: Metrics.baseMargin,
     paddingVertical: Metrics.baseMargin,
     justifyContent: 'center',
@@ -58,7 +58,7 @@ export default StyleSheet.create({
     padding: Metrics.smallMargin,
     marginTop: -10,
     marginBottom: 10,
-    borderRadius:5,
+    borderRadius: 5
   },
   errorText: {
     fontSize: Fonts.size.tiny

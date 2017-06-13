@@ -17,7 +17,7 @@ const images = {
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
-  anon: require("../Images/anon.png")
+  anon: require('../Images/anon.png')
 }
 
 export default images

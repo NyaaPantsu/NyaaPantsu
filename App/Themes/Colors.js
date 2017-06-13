@@ -30,7 +30,7 @@ const colors = {
   headerbg: '#d7c6e7',
   drawerbg: '#dcccea',
   textmenu: '#9b85ae',
-  palegreen: "#98FB98",
+  palegreen: '#98FB98',
   text: '#E0D7E5'
 }
 

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react'
 import { DrawerNavigator, DrawerItems } from 'react-navigation'
-import { TouchableOpacity, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { ScrollView } from 'react-native'
 
 import TorrentListScreen from '../Containers/TorrentListScreen'
 import SearchScreen from '../Containers/SearchScreen'
 import UploadScreen from '../Containers/UploadScreen'
 
-import UserBadge from "../Components/UserBadge"
+import UserBadge from '../Components/UserBadge'
 
 import styles from './Styles/NavigationStyles'
 
@@ -15,31 +14,29 @@ import styles from './Styles/NavigationStyles'
 const DrawerNav = DrawerNavigator({
   TorrentListScreen: {
     screen: TorrentListScreen,
-    path: "torrents?title=&category=&status=&max="
+    path: 'torrents?title=&category=&status=&max='
   },
   SearchScreen: {
     screen: SearchScreen
   },
-  UploadScreen: { screen: UploadScreen },
+  UploadScreen: { screen: UploadScreen }
 }, {
   // Default config for all screens
   initialRouteName: 'TorrentListScreen',
 
-  contentComponent: props => renderDrawer(props),
+  contentComponent: props => {
+    return (
+      <ScrollView style={[styles.container, styles.drawer]}>
+        <UserBadge navigation={props.navigation} />
+
+        <DrawerItems {...props} />
+      </ScrollView>
+    )
+  },
   contentOptions: {
     style: styles.drawer,
-    labelStyle: styles.drawerText,
+    labelStyle: styles.drawerText
   }
 })
-
-renderDrawer = props => {
-  return (
-  <ScrollView style={ [styles.container, styles.drawer] }>
-    <UserBadge navigation={ props.navigation } />
-
-    <DrawerItems {...props} />
-  </ScrollView>
-  )
-};
 
 export default DrawerNav

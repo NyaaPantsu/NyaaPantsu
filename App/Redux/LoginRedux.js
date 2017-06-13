@@ -33,11 +33,11 @@ export const request = (state, { username, password }) => state.merge({ fetching
 export const checkRequest = (state, { username, token }) => state.merge({ fetching: true, username, token })
 // we've successfully logged in or checked token
 export const success = (state, { user }) =>
-  state.merge({ fetching: false, error: null, user, password:null, token:null })
+  state.merge({ fetching: false, error: null, user, password: null, token: null })
 
 // we've had a problem logging in
 export const failure = (state, { error }) =>
-  state.merge({ fetching: false, error, password:null, token:null })
+  state.merge({ fetching: false, error, password: null, token: null })
 
 // we've logged out
 export const logout = (state) => INITIAL_STATE

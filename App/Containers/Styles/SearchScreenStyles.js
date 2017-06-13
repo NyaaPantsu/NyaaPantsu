@@ -4,7 +4,7 @@ import { Colors, Metrics } from '../../Themes'
 export default StyleSheet.create({
   container: {
     paddingTop: 70,
-    paddingBottom: 70,
+    paddingBottom: 70
   },
   background: {
     backgroundColor: Colors.background

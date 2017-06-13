@@ -15,7 +15,7 @@ test('All fixtures map to actual API', () => {
 test('FixtureAPI login returns the right file', () => {
   const expectedFile = require('../../App/Fixtures/user.json')
 
-  expect(FixtureAPI.login("test", "test")).toEqual({
+  expect(FixtureAPI.login('test', 'test')).toEqual({
     ok: true,
     data: expectedFile
   })
@@ -24,7 +24,7 @@ test('FixtureAPI login returns the right file', () => {
 test('FixtureAPI checkLogin returns the right file for test', () => {
   const expectedFile = require('../../App/Fixtures/user.json')
 
-  expect(FixtureAPI.checkLogin('test', "token")).toEqual({
+  expect(FixtureAPI.checkLogin('test', 'token')).toEqual({
     ok: true,
     data: expectedFile
   })

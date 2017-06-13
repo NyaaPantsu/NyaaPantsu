@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, ListView, TouchableOpacity, Image, Alert } from 'react-native'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import {Images} from '../Themes'
 
 // For empty lists
@@ -12,19 +12,15 @@ import styles from './Styles/TorrentListScreenStyle'
 import API from '../Services/Api'
 
 class TorrentListScreen extends React.Component {
-  state: {
-    dataSource: Object
-  }
-
   static navigationOptions = ({ navigation }) => ({
-      title: "Torrents",
-      headerTitle: ((navigation.state.params && navigation.state.params.title) ? "Results for '" + navigation.state.params.title + "' - NyaaPantsu" : "Torrents - NyaaPantsu"),
-      headerRight: ((navigation.state.params) ? (
-        <TouchableOpacity style={ { paddingRight: 10, paddingLeft: 10 } } onPress={ navigation.state.params.setButtonReload }>
-        <Icon name={( (navigation.state.params && (navigation.state.params.title || navigation.state.params.category || navigation.state.params.max || navigation.state.params.status )) ? "times-circle-o" : "refresh" )} size={30} />
-        </TouchableOpacity>
+    title: 'Torrents',
+    headerTitle: ((navigation.state.params && navigation.state.params.title) ? "Results for '" + navigation.state.params.title + "' - NyaaPantsu" : 'Torrents - NyaaPantsu'),
+    headerRight: ((navigation.state.params) ? (
+      <TouchableOpacity style={{ paddingRight: 10, paddingLeft: 10 }} onPress={navigation.state.params.setButtonReload}>
+        <Icon name={((navigation.state.params && (navigation.state.params.title || navigation.state.params.category || navigation.state.params.max || navigation.state.params.status)) ? 'times-circle-o' : 'refresh')} size={30} />
+      </TouchableOpacity>
       ) : '')
-    });
+  });
   constructor (props) {
     super(props)
     /* ***********************************************************
@@ -40,10 +36,10 @@ class TorrentListScreen extends React.Component {
     * Make this function fast!  Perhaps something like:
     *   (r1, r2) => r1.id !== r2.id}
     *************************************************************/
-    this.title = ""
-    this.category = ""
-    this.max = ""
-    this.status = ""
+    this.title = ''
+    this.category = ''
+    this.max = ''
+    this.status = ''
     const rowHasChanged = (r1, r2) => r1.id !== r2.id
 
     // DataSource configured
@@ -61,10 +57,10 @@ class TorrentListScreen extends React.Component {
       if (params.max !== undefined) this.max = params.max
       if (params.status !== undefined) this.status = params.status
     } else {
-      this.title = ""
-      this.category = ""
-      this.max = ""
-      this.status = ""
+      this.title = ''
+      this.category = ''
+      this.max = ''
+      this.status = ''
     }
     const api = API.create()
     const torrents = await api.getTorrents(this.title, this.category, this.max, this.status)
@@ -77,8 +73,8 @@ class TorrentListScreen extends React.Component {
         'Error',
         'Seems like there was a network error, please try again.',
         [
-          {text: 'Cancel', onPress: () => this.props.navigation.navigate("TorrentListScreen"), style: 'cancel'},
-          {text: 'OK', onPress: () => this.getData()},
+          {text: 'Cancel', onPress: () => this.props.navigation.navigate('TorrentListScreen'), style: 'cancel'},
+          {text: 'OK', onPress: () => this.getData()}
         ],
         { cancelable: false }
       )
@@ -95,15 +91,15 @@ class TorrentListScreen extends React.Component {
   *************************************************************/
 
   renderRow (rowData) {
-    const {navigate} = this.props.navigation;
+    const {navigate} = this.props.navigation
     return (
-      <View style={ styles.topView }>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={ () => navigate("TorrentViewScreen", { id: rowData.id, name: rowData.name }) }>
-          <Text style={styles.boldLabel}>{rowData.name}</Text>
-        </TouchableOpacity>
-          <Text style={ styles.uploader }>{rowData.uploader_name}</Text>
-      </View>
+      <View style={styles.topView}>
+        <View style={styles.row}>
+          <TouchableOpacity onPress={() => navigate('TorrentViewScreen', { id: rowData.id, name: rowData.name })}>
+            <Text style={styles.boldLabel}>{rowData.name}</Text>
+          </TouchableOpacity>
+          <Text style={styles.uploader}>{rowData.uploader_name}</Text>
+        </View>
       </View>
     )
   }
@@ -123,33 +119,31 @@ class TorrentListScreen extends React.Component {
   }
   *************************************************************/
 
-  _setButtonReload() {
-    if (this.title != "" || this.category != "" || this.max != "" || this.status != "" ) {
-      this.props.navigation.setParams({ title: "", category: "", max: "", status: ""})
+  _setButtonReload () {
+    if (this.title !== '' || this.category !== '' || this.max !== '' || this.status !== '') {
+      this.props.navigation.setParams({title: '', category: '', max: '', status: ''})
     } else {
       this.getData()
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // set handler method with setParams
-    this.props.navigation.setParams({ 
+    this.props.navigation.setParams({
       setButtonReload: this._setButtonReload.bind(this)
-    });
+    })
     this.timerInterval = setInterval(() => {
       this.getData()
-    }, 300000); // Every five minutes
+    }, 300000) // Every five minutes
   }
 
-  componentWillUnmount() {
-    clearInterval(this.timerInterval);
+  componentWillUnmount () {
+    clearInterval(this.timerInterval)
   }
 
   componentWillReceiveProps (newProps) {
     let params = newProps.navigation.state.params
-    if (params.title != this.title || params.category != this.category || params.max != this.max || params.status != this.status)
-    this.getData(params)
-    
+    if (params.title !== this.title || params.category !== this.category || params.max !== this.max || params.status !== this.status) { this.getData(params) }
   }
   // Used for friendly AlertMessage
   // returns true if the dataSource is empty
@@ -160,7 +154,7 @@ class TorrentListScreen extends React.Component {
   // Render a footer.
   renderFooter = () => {
     return (
-      <Text></Text>
+      <Text />
     )
   }
 

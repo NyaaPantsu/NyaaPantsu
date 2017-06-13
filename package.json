@@ -48,6 +48,7 @@
     "seamless-immutable": "^7.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-jest": "20.0.3",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react-native": "1.9.2",
@@ -62,7 +63,8 @@
     "react-test-renderer": "~15.4.1",
     "reactotron-react-native": "^1.11.1",
     "reactotron-redux": "^1.11.1",
-    "reactotron-redux-saga": "^1.11.1"
+    "reactotron-redux-saga": "^1.11.1",
+    "standard": "^10.0.2"
   },
   "jest": {
     "testMatch": [
@@ -77,6 +79,12 @@
       "./Tests/Setup"
     ],
     "preset": "react-native"
+  },
+  "standard": {
+    "globals": [
+      "__DEV__"
+    ],
+    "parser": "babel-eslint"
   },
   "config": {}
 }

@@ -35,10 +35,10 @@ const create = (baseURL = 'https://nyaa.pantsu.cat/api') => {
   // way at this level.
   //
   const getRoot = () => api.get('')
-  const getTorrents = (title, category, max, status) => api.get('search', {q: title, c:category, s:status, max:max})
+  const getTorrents = (title, category, max, status) => api.get('search', {q: title, c: category, s: status, max: max})
   const login = (username, password) => api.post('login', {username: username, password: password})
   const checkLogin = (username, token) => api.get('token/check', {username: username}, {headers: {'Authorization': token}})
-  const getTorrent = (id) => api.get('view/'+id)
+  const getTorrent = (id) => api.get('view/' + id)
 
   // ------
   // STEP 3

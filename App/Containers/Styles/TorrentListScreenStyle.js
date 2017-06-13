@@ -21,7 +21,7 @@ export default StyleSheet.create({
     marginLeft: Metrics.baseMargin,
     color: Colors.purpleBlack,
     textAlign: 'left',
-    textAlignVertical: "center",
+    textAlignVertical: 'center'
   },
   uploader: {
     fontWeight: 'bold',
@@ -43,7 +43,7 @@ export default StyleSheet.create({
   },
   topView: {
     height: 45,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginLeft: 0,
     marginBottom: 0
   },

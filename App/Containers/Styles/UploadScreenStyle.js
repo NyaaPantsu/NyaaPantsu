@@ -4,7 +4,7 @@ import { Colors, Metrics } from '../../Themes'
 export default StyleSheet.create({
   container: {
     paddingTop: 70,
-    paddingBottom: 70,
+    paddingBottom: 70
   },
   background: {
     backgroundColor: Colors.background
@@ -21,13 +21,13 @@ export default StyleSheet.create({
   switchRow: {
     paddingVertical: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   rowLabel: {
     color: Colors.charcoal
   },
   switchLabel: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     flex: 1
   },
   textInput: {
@@ -62,8 +62,8 @@ export default StyleSheet.create({
   },
   fileButtonWrapper: {
     flex: 1,
-    alignSelf: "flex-start",
-    marginVertical: Metrics.baseMargin,
+    alignSelf: 'flex-start',
+    marginVertical: Metrics.baseMargin
   },
   fileButton: {
     flex: 1,
@@ -77,8 +77,8 @@ export default StyleSheet.create({
   },
   fileLabel: {
     textAlign: 'center',
-    flex:2,
-    alignSelf: "flex-start",
+    flex: 2,
+    alignSelf: 'flex-start',
     marginVertical: Metrics.smallMargin,
     color: Colors.charcoal,
     paddingTop: Metrics.baseMargin

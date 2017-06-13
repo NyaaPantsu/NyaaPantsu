@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Metrics, Colors, Fonts } from '../../Themes'
+import { Metrics, Colors, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
@@ -8,11 +8,11 @@ export default StyleSheet.create({
     marginBottom: 20
   },
   center: {
-    textAlign:"center"
+    textAlign: 'center'
   },
   table: {
     flexDirection: 'column',
-    flex:1
+    flex: 1
   },
   row: {
     flexDirection: 'row'
@@ -30,15 +30,15 @@ export default StyleSheet.create({
     backgroundColor: Colors.fire
   },
   title: {
-    textAlign:"center",
+    textAlign: 'center',
     fontSize: 16,
-    fontWeight: "bold",
-    color: Colors.purpleBlack,
+    fontWeight: 'bold',
+    color: Colors.purpleBlack
   },
   button: {
     height: 45,
     borderRadius: 5,
-    flex:1,
+    flex: 1,
     marginHorizontal: Metrics.baseMargin,
     paddingVertical: Metrics.baseMargin,
     justifyContent: 'center'
@@ -51,8 +51,8 @@ export default StyleSheet.create({
     marginVertical: Metrics.baseMargin
   },
   boldText: {
-    fontWeight: "bold",
-    color: Colors.purpleBlack,
+    fontWeight: 'bold',
+    color: Colors.purpleBlack
   },
   buttonDisplay: {
     color: Colors.charcoal

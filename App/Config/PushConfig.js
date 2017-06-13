@@ -1,8 +1,5 @@
-import React from 'react'
-import { Platform, PermissionsAndroid } from 'react-native'
 import PushNotification from 'react-native-push-notification'
-import RNFetchBlob from 'react-native-fetch-blob'
-import Share from 'react-native-share';
+import Share from 'react-native-share'
 
 // https://github.com/zo0r/react-native-push-notification
 PushNotification.configure({
@@ -18,10 +15,10 @@ PushNotification.configure({
     const torrentFilePath = notification.message
     console.log(torrentFilePath)
     Share.open({
-      message: "Torrent File - NyaaPantsu",
-      url: "file://"+torrentFilePath,
-      subject: "Torrent File - NyaaPantsu" //  for email
-    });
+      message: 'Torrent File - NyaaPantsu',
+      url: 'file://' + torrentFilePath,
+      subject: 'Torrent File - NyaaPantsu' //  for email
+    })
   },
 
   // IOS ONLY (optional): default: all - Permissions to register.
@@ -44,23 +41,3 @@ PushNotification.configure({
     */
   requestPermissions: true
 })
-
-async function requestExternalStoragePermission() {
-  try {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      {
-        'title': 'NyaaPantsu Permission',
-        'message': 'NyaaPantsu needs access to your file storage ' +
-                   'so you can upload torrents.'
-      }
-    )
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log("You can upload torrents")
-    } else {
-      console.log("External Storage permission denied")
-    }
-  } catch (err) {
-    console.warn(err)
-  }
-}
