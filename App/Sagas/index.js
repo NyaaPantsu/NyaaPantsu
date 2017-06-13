@@ -6,7 +6,6 @@ import DebugConfig from '../Config/DebugConfig'
 /* ------------- Types ------------- */
 
 import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
 import { NyaaTypes } from '../Redux/NyaaRedux'
 import { LoginTypes } from '../Redux/LoginRedux'
 
@@ -15,7 +14,6 @@ import { LoginTypes } from '../Redux/LoginRedux'
 import { startup } from './StartupSagas'
 import { login, checkLogin } from './LoginSagas'
 import { getTorrents, getTorrent } from './NyaaSagas'
-import { getUserAvatar } from './GithubSagas'
 
 /* ------------- API ------------- */
 

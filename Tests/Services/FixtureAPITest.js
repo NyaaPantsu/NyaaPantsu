@@ -12,28 +12,28 @@ test('All fixtures map to actual API', () => {
   expect(R.equals(fixtureKeys, intersection)).toBe(true)
 })
 
-test('FixtureAPI getRate returns the right file', () => {
-  const expectedFile = require('../../App/Fixtures/rateLimit.json')
+test('FixtureAPI login returns the right file', () => {
+  const expectedFile = require('../../App/Fixtures/user.json')
 
-  expect(FixtureAPI.getRate()).toEqual({
+  expect(FixtureAPI.login("test", "test")).toEqual({
     ok: true,
     data: expectedFile
   })
 })
 
-test('FixtureAPI getUser returns the right file for gantman', () => {
-  const expectedFile = require('../../App/Fixtures/gantman.json')
+test('FixtureAPI checkLogin returns the right file for test', () => {
+  const expectedFile = require('../../App/Fixtures/user.json')
 
-  expect(FixtureAPI.getUser('GantMan')).toEqual({
+  expect(FixtureAPI.checkLogin('test', "token")).toEqual({
     ok: true,
     data: expectedFile
   })
 })
 
-test('FixtureAPI getUser returns the right file for skellock as default', () => {
-  const expectedFile = require('../../App/Fixtures/skellock.json')
+test('FixtureAPI getTorrents returns the right file for skellock as default', () => {
+  const expectedFile = require('../../App/Fixtures/torrents.json')
 
-  expect(FixtureAPI.getUser('Whatever')).toEqual({
+  expect(FixtureAPI.getTorrents()).toEqual({
     ok: true,
     data: expectedFile
   })

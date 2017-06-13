@@ -9,7 +9,7 @@ test('attempt', () => {
 test('success', () => {
   const state = reducer(INITIAL_STATE, Actions.loginSuccess('hi'))
 
-  expect(state.username).toBe('hi')
+  expect(state.user).toBe('hi')
 })
 
 test('failure', () => {
@@ -23,7 +23,7 @@ test('logout', () => {
   const loginState = reducer(INITIAL_STATE, Actions.loginSuccess('hi'))
   const state = reducer(loginState, Actions.logout())
 
-  expect(state.username).toBeFalsy()
+  expect(state.user).toBeFalsy()
 })
 
 test('isLoggedIn', () => {

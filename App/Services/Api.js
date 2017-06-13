@@ -39,8 +39,6 @@ const create = (baseURL = 'https://nyaa.pantsu.cat/api') => {
   const login = (username, password) => api.post('login', {username: username, password: password})
   const checkLogin = (username, token) => api.get('token/check', {username: username}, {headers: {'Authorization': token}})
   const getTorrent = (id) => api.get('view/'+id)
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
 
   // ------
   // STEP 3
@@ -59,8 +57,6 @@ const create = (baseURL = 'https://nyaa.pantsu.cat/api') => {
     getRoot,
     getTorrents,
     getTorrent,
-    getRate,
-    getUser,
     checkLogin,
     login
   }

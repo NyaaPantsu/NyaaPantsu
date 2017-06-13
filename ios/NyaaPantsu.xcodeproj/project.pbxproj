@@ -51,6 +51,10 @@
 		2FE6B75921A3483CBBC6293B /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3609EAF7D47B42C780D69CA1 /* libRNShare.a */; };
 		D88780352A0441D3BC64AE2F /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFFD3E79E6941508D3B1D9B /* libRNFetchBlob.a */; };
 		9C46F0ED0F0D48A3BF5933AA /* libRNDocumentPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69877BDFAB044D1F832AE7B8 /* libRNDocumentPicker.a */; };
+		63F36C4E5AC94736B1C00DC5 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6574913CFA46D68C0515AD /* libReact.a */; };
+		2F98558A6C0C4C0DBF0F367A /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC4C9025B1CA4887BC0B4C0A /* libyoga.a */; };
+		ACB834083E4B4A0B8D717A0E /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0CADD52B8B497184A0E6FC /* libcxxreact.a */; };
+		5D912F00000445BF889992DF /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB73596B5FCD46118F6B199E /* libjschelpers.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,6 +296,11 @@
 		9DFFD3E79E6941508D3B1D9B /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		8C3848C681C9488B816EED53 /* RNDocumentPicker.xcodeproj */ = {isa = PBXFileReference; name = "RNDocumentPicker.xcodeproj"; path = "../node_modules/react-native-document-picker/ios/RNDocumentPicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		69877BDFAB044D1F832AE7B8 /* libRNDocumentPicker.a */ = {isa = PBXFileReference; name = "libRNDocumentPicker.a"; path = "libRNDocumentPicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		BB4A7F4E96E244668AA7C6C9 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; name = "RNI18n.xcodeproj"; path = "../node_modules/react-native-i18n/RNI18n.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		AC6574913CFA46D68C0515AD /* libReact.a */ = {isa = PBXFileReference; name = "libReact.a"; path = "libReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FC4C9025B1CA4887BC0B4C0A /* libyoga.a */ = {isa = PBXFileReference; name = "libyoga.a"; path = "libyoga.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		BA0CADD52B8B497184A0E6FC /* libcxxreact.a */ = {isa = PBXFileReference; name = "libcxxreact.a"; path = "libcxxreact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FB73596B5FCD46118F6B199E /* libjschelpers.a */ = {isa = PBXFileReference; name = "libjschelpers.a"; path = "libjschelpers.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +333,10 @@
 				2FE6B75921A3483CBBC6293B /* libRNShare.a in Frameworks */,
 				D88780352A0441D3BC64AE2F /* libRNFetchBlob.a in Frameworks */,
 				9C46F0ED0F0D48A3BF5933AA /* libRNDocumentPicker.a in Frameworks */,
+				63F36C4E5AC94736B1C00DC5 /* libReact.a in Frameworks */,
+				2F98558A6C0C4C0DBF0F367A /* libyoga.a in Frameworks */,
+				ACB834083E4B4A0B8D717A0E /* libcxxreact.a in Frameworks */,
+				5D912F00000445BF889992DF /* libjschelpers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +509,7 @@
 				002745A48C304DAEB062ADA3 /* RNShare.xcodeproj */,
 				C48E8C5BF7A540C9B8626FDB /* RNFetchBlob.xcodeproj */,
 				8C3848C681C9488B816EED53 /* RNDocumentPicker.xcodeproj */,
+				BB4A7F4E96E244668AA7C6C9 /* RNI18n.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1053,6 +1067,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1062,6 +1080,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Debug;
@@ -1083,6 +1102,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1092,6 +1115,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Release;
@@ -1119,6 +1143,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Debug;
@@ -1145,6 +1170,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Release;
@@ -1175,6 +1201,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1184,6 +1214,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Debug;
@@ -1214,6 +1245,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1223,6 +1258,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-document-picker\ios\RNDocumentPicker",
+					"$(SRCROOT)\..\node_modules\react-native-i18n\RNI18n",
 				);
 			};
 			name = Release;
@@ -1248,6 +1284,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1272,6 +1312,10 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

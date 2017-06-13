@@ -6,19 +6,16 @@ export default {
       data: require('../Fixtures/root.json')
     }
   },
-  getRate: () => {
+  login: (username, password) => {
     return {
       ok: true,
-      data: require('../Fixtures/rateLimit.json')
+      data: require('../Fixtures/user.json')
     }
   },
-  getUser: (username) => {
-    // This fixture only supports gantman or else returns skellock
-    const gantmanData = require('../Fixtures/gantman.json')
-    const skellockData = require('../Fixtures/skellock.json')
+  checkLogin: (username, token) => {
     return {
       ok: true,
-      data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
+      data: require('../Fixtures/user.json')
     }
   },
   getTorrents: (title, category, max, status) => {
