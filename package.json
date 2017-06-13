@@ -84,6 +84,7 @@
     "globals": [
       "__DEV__"
     ],
+    "plugins": [ "react" ],
     "parser": "babel-eslint"
   },
   "config": {}
