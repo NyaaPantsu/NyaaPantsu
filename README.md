@@ -6,8 +6,10 @@
 ## :arrow_up: How to Setup
 
 **Step 1:** git clone this repo:
+`git clone https://github.com/NyaaPantsu/NyaaPantsu.git`
 
 **Step 2:** cd to the cloned repo:
+`cd NyaaPantsu`
 
 **Step 3:** Install the Application with `npm install`
 
